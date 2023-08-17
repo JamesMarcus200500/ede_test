@@ -1,0 +1,78 @@
+html,
+body,
+div,
+h5 {
+  scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  color: #243c4f !important;
+}
+/* :root {
+  --color-main: "#217FCE";
+  --color-light: #42AAFF;
+} */
+@font-face {
+  font-family: "Raleway";
+  src: url("./utils/raleway/Raleway-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("./utils/raleway/Raleway-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Keep Calm";
+  src: url("./utils/keepcalm/KeepCalm-Medium.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+.count-mini-title {
+  color: #243c4f;
+  text-align: center;
+  font-family: Raleway;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 13px;
+  display: block;
+}
+.MuiAccordion-root {
+  border-radius: 15px !important;
+}
+.MuiAccordion-root::before {
+  height: 0px !important;
+}
+.MuiTextField-root {
+  font-family: "Raleway";
+  color: "red";
+}
+.MuiTextField-root:hover {
+  /* background: #2e8b57; */
+  border-radius: "40px";
+}
+
+.opt-input:focus-visible {
+  border: 1px solid red;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 4px solid red;
+}
+.flexul{
+  display: flex;
+  list-style: none;
+  padding-left: 10px;
+}
+.flexul li{
+  margin-right: 2rem;  
+}
