@@ -75,11 +75,11 @@ const LoginForm = ({ open, setShowLoginDialog }) => {
               .post(`/${userRole}/login`, formdata)
               .then((res) => {
                 if(session){
-                  push(`/profile/${sha256(userRole)}`)
+                  push(`/profile`)
                 }else if (res.status == 200) {
                   setLoading(false);
                   localStorage.setItem("authTokenOwn", sha256(res.data.token));
-                  push(`/profile/${sha256(userRole)}`)
+                  push(`/profile`)
                   // push({
                   //   pathname: '/profile',
                   //   query: {name: userRole}
