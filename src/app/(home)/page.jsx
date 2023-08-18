@@ -107,11 +107,11 @@ export default function Home() {
       >
         <SnackbarWarningMessage />
         <TransitionBox ix="-10rem" ax={0} ds={0.5}>
-          <LabelMain>Welcome to ILBC EduPlus Platform</LabelMain>
+          <LabelMain>Welcome to Saungpokki Platform</LabelMain>
         </TransitionBox>
         <TransitionBox ix="10rem" ax={0} ds={0.5}>
           <LabelMainSmall>
-            Empower Your English Journey with ILBC EduPlus!
+            Empower Your English Journey with Saungpokki!
           </LabelMainSmall>
         </TransitionBox>
         {sentOTP ? (
@@ -170,7 +170,7 @@ export default function Home() {
         <Grid container justifyContent="center">
           <TransitionBox iy="-5rem" ay={0} ds={0.5}>
             <LabelSecondary>
-              Master English on a Budget with ILBC EduPlus!
+              Master English on a Budget with ILBC Saungpokki!
             </LabelSecondary>
           </TransitionBox>
         </Grid>
@@ -184,7 +184,7 @@ export default function Home() {
             textAlign: "center",
           }}
         >
-          ILBC EduPlus is an innovative English Learning Platform developed by
+          Saungpokki is an innovative English Learning Platform developed by
           ILBC to empower individuals worldwide in enhancing their English
           language skills. ILBC EduPlus offers a range of four products:
           One-on-One Private Class, One-to-Many Group Class, MOOC, and
@@ -256,6 +256,7 @@ export default function Home() {
       </Container>
 
       {/* Choose Us/ Why Choose Edu+ */}
+
       <Grid
         container
         sx={{

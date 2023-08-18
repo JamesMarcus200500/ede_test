@@ -92,7 +92,7 @@ export default function ChooseEduplus() {
               sx={{ fontWeight: "bold", fontFamily: "Raleway" }}
               mb={4}
             >
-              Why choose Edu+
+              Why choose Saungpokki
             </Typography>
           </ItemAsGridChild>
         </TransitionBox>

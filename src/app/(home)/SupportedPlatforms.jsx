@@ -56,7 +56,7 @@ export default function SupportedPlatforms() {
             }}
             mb={5}
           >
-            Edu+ is a learning platform and supports
+            Saungpokki is a learning platform and supports
           </Typography>
         </Grid>
         <Grid container item spacing={10}>

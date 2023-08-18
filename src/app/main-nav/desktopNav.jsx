@@ -26,7 +26,7 @@ import LoginForm from "../(auth)/login/LoginForm";
 import { LogoutOutlined, Person2 } from "@mui/icons-material";
 import { signOut } from "next-auth/react";
 import RenderCircularProgress from "../components/RenderCircularProgress";
-import sha256 from 'crypto-js/sha256';
+import sha256 from "crypto-js/sha256";
 
 export default function DesktopNav({
   menuItems,
@@ -45,17 +45,17 @@ export default function DesktopNav({
   //   setAnchorEl(null);
   //   handleMobileMenuClose();
   // };
-console.log(session)
+  console.log(session);
   const handleLogout = (e) => {
     e.preventDefault();
     //signOut(auth);//firebase signOut Usage
-    if(!session){
+    if (!session) {
       localStorage.removeItem("authTokenOwn");
       push("/");
-    }else{
+    } else {
       signOut({ callbackUrl: "/" }); //next-auth singOut
-    localStorage.removeItem("authTokenOwn");
-    }    
+      localStorage.removeItem("authTokenOwn");
+    }
   };
 
   const handleClickOutside = (e) => {
@@ -94,7 +94,7 @@ console.log(session)
       sx={{
         minHeight: "148px",
         backgroundImage: `url(${"/images/bgicon.png"})`,
-        backgroundSize: "100%"
+        backgroundSize: "100%",
       }}
     >
       <AppBar
@@ -120,8 +120,10 @@ console.log(session)
             }}
           >
             <img
-              //src="images/logo.png"
-              src="https://eduplus-test.s3.ap-southeast-1.amazonaws.com/images/logo.png"
+              src="images/logo2.png"
+              width={128}
+              height={40}
+              // src="https://eduplus-test.s3.ap-southeast-1.amazonaws.com/images/logo.png"
               onClick={() => push("/")}
               style={{ marginLeft: "-50px", zIndex: 99 }}
             />
@@ -173,7 +175,7 @@ console.log(session)
                           startIcon={<Person2 />}
                           onClick={() => {
                             if (status == "authenticated" || token) {
-                              push(`/profile/${sha256('userProfile')}`)
+                              push(`/profile/${sha256("userProfile")}`);
                             }
                           }}
                         >
@@ -202,7 +204,11 @@ console.log(session)
                 </Box>
               ) : status == "loading" ? (
                 <Box
-                  sx={{ width: "120px", paddingTop: "15px", paddingLeft: "60px" }}
+                  sx={{
+                    width: "120px",
+                    paddingTop: "15px",
+                    paddingLeft: "60px",
+                  }}
                 >
                   <RenderCircularProgress size="1.5rem" />
                 </Box>
