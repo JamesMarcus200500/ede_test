@@ -62,11 +62,12 @@ const PurchasedCourse = () => {
           setLoading(false);
           sethaveData(true);
           setHaveError(false);
-          setCourses(result.data.data);
+          // setCourses(result.data.data);
         });
       })
       .catch((error) => error);
   }, []);
+  console.log(courses);
   return (
     <Stack gap={3}>
       {loading ? (
@@ -125,7 +126,7 @@ const PurchasedCourse = () => {
                   </Box>
                 </Box>
               </Box>
-              {Object.keys(courses).includes("meetLink") ? (
+              {course.meetLink ? (
                 <Button
                   sx={{ px: 4, py: 2, borderRadius: "15px" }}
                   variant="outlined"

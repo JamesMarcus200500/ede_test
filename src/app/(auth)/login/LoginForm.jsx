@@ -201,7 +201,7 @@ const LoginForm = ({ open, setShowLoginDialog }) => {
                         e.preventDefault();
                         signIn("google", {
                           callbackUrl: `/profile`,
-                        });
+                        }).then((res) => console.log(res));
                       }}
                     >
                       Continue With Google
