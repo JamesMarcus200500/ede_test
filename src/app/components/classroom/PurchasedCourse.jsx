@@ -38,7 +38,7 @@ const PurchasedCourse = () => {
 
   const handleJoinMeeting = () => {
     console.log("join meeting fun hit");
-    return router.push("https://meet.google.com/kcg-kxdt-cyt");
+    return router.push("https://meet.google.com/jgj-jamn-xyb");
   };
 
   useEffect(() => {
