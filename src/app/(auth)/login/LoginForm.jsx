@@ -71,31 +71,29 @@ const LoginForm = ({ open, setShowLoginDialog }) => {
           formdata.append("password", values.password);
           formdata.append("role", userRole);
           try {
-            api
-              .post(`/${userRole}/login`, formdata)
-              .then((res) => {
-                if(session){
-                  push(`/profile`)
-                }else if (res.status == 200) {
-                  setLoading(false);
-                  localStorage.setItem("authTokenOwn", sha256(res.data.token));
-                  push(`/profile`)
-                  // push({
-                  //   pathname: '/profile',
-                  //   query: {name: userRole}
-                  // })
-                  setShowLoginDialog(false);
-                } else if (res.status == 401) {
-                  setError("You are not authenticated!");
-                  setLoading(false);
-                } else if (res.status == 500) {
-                  setError(res.error);
-                  setLoading(false);
-                } else {
-                  setError("something went wrong!");
-                  setLoading(false);
-                }
-              })              
+            api.post(`/${userRole}/login`, formdata).then((res) => {
+              if (session) {
+                push(`/profile`);
+              } else if (res.status == 200) {
+                setLoading(false);
+                localStorage.setItem("authTokenOwn", sha256(res.data.token));
+                push(`/profile`);
+                // push({
+                //   pathname: '/profile',
+                //   query: {name: userRole}
+                // })
+                setShowLoginDialog(false);
+              } else if (res.status == 401) {
+                setError("You are not authenticated!");
+                setLoading(false);
+              } else if (res.status == 500) {
+                setError(res.error);
+                setLoading(false);
+              } else {
+                setError("something went wrong!");
+                setLoading(false);
+              }
+            });
           } catch (error) {
             setLoading(false);
             setError(error.message);
@@ -202,7 +200,7 @@ const LoginForm = ({ open, setShowLoginDialog }) => {
                       onClick={(e) => {
                         e.preventDefault();
                         signIn("google", {
-                          callbackUrl: `/profile/${sha256('userRole')}`,
+                          callbackUrl: `/profile`,
                         });
                       }}
                     >
@@ -240,7 +238,7 @@ const LoginForm = ({ open, setShowLoginDialog }) => {
                     onClick={(e) => {
                       e.preventDefault();
                       signIn("google", {
-                        callbackUrl: `/profile/${sha256('userRole')}`
+                        callbackUrl: `/profile/${sha256("userRole")}`,
                       });
                     }}
                   >
