@@ -44,7 +44,7 @@ export default function DesktopNav({
   const [showLoginDialog, setShowLoginDialog] = useState(false);
   const menuRef = useRef(null);
 
-  const {hastoken} = useSelector(state => state.authData);
+  const {hastoken, isLogin} = useSelector(state => state.authData);
   const dispatch = useDispatch();
   // const handleMenuClose = () => {
   //   setAnchorEl(null);
@@ -197,17 +197,7 @@ export default function DesktopNav({
                     )}
                   </Box>
                 </>
-              ) : status == "loading" ? (
-                <Box
-                  sx={{
-                    width: "120px",
-                    paddingTop: "15px",
-                    paddingLeft: "60px",
-                  }}
-                >
-                  <RenderCircularProgress size="1.5rem" />
-                </Box>
-              ) : status == "loading" ? (
+              ): isLogin ? (
                 <Box
                   sx={{
                     width: "120px",

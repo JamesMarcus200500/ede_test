@@ -21,7 +21,7 @@ export default function Navigation() {
   //console.log(session, token)
   const dispatch = useDispatch();
   React.useEffect(() => {
-    dispatch(hasLogin())
+    //dispatch(hasLogin())
     const addSticky = () => {
       if (window.scrollY >= 100) {
         setSticky(true);

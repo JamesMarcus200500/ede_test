@@ -2,7 +2,7 @@
 import { createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-  hastoken: window.localStorage.getItem("authTokenOwn"),
+  hastoken: "",
   isLogin: false,
 };
 
@@ -14,15 +14,17 @@ export const authSlice = createSlice({
       //console.log("authslice", state, action)
       // if(state.hastoken){
         try {
-          window.localStorage.setItem("authTokenOwn", action.payload.token);
+          localStorage.setItem("authTokenOwn", action.payload.token);
         } catch (error) {
           console.log(error.message);
         }
-        return{
-          ...state,
-          hastoken: window.localStorage.getItem("authTokenOwn"),
-          isLogin: true
-        }
+        if(localStorage.getItem("authTokenOwn")){
+          return{
+            ...state,
+            hastoken: localStorage.getItem("authTokenOwn"),
+            isLogin: true
+          }
+        }   
       //}
     },
     logOut(state, action){
