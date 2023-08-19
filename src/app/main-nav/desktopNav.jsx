@@ -27,6 +27,8 @@ import { LogoutOutlined, Person2 } from "@mui/icons-material";
 import { signOut } from "next-auth/react";
 import RenderCircularProgress from "../components/RenderCircularProgress";
 import sha256 from "crypto-js/sha256";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../store/authSlice";
 
 export default function DesktopNav({
   menuItems,
@@ -41,16 +43,19 @@ export default function DesktopNav({
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
   const menuRef = useRef(null);
+
+  const {hastoken} = useSelector(state => state.authData);
+  const dispatch = useDispatch();
   // const handleMenuClose = () => {
   //   setAnchorEl(null);
   //   handleMobileMenuClose();
   // };
-  console.log(session);
+  //console.log(session);
   const handleLogout = (e) => {
     e.preventDefault();
     //signOut(auth);//firebase signOut Usage
     if (!session) {
-      localStorage.removeItem("authTokenOwn");
+      dispatch(logOut());
       push("/");
     } else {
       signOut({ callbackUrl: "/" }); //next-auth singOut
@@ -146,7 +151,7 @@ export default function DesktopNav({
             >
               <SelectInput />
               {/* <NavMenuItem onClick={handleMenuClose} routeTo="login">  */}
-              {status == "authenticated" || token ? (
+              {status == "authenticated" || hastoken  ? (
                 <>
                   <NavMenuItem key="favourite">
                     <FavoriteIcon sx={{ width: "21px" }} />
@@ -174,8 +179,8 @@ export default function DesktopNav({
                           sx={{ px: 4 }}
                           startIcon={<Person2 />}
                           onClick={() => {
-                            if (status == "authenticated" || token) {
-                              push(`/profile/${sha256("userProfile")}`);
+                            if (status == "authenticated" || hastoken ) {
+                              push(`/profile}`);
                             }
                           }}
                         >

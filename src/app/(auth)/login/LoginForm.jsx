@@ -24,6 +24,8 @@ import api from "@/app/config/api";
 import RenderCircularProgress from "@/app/components/RenderCircularProgress";
 import ErrorAlert from "@/app/components/ErrorAlert";
 import sha256 from "crypto-js/sha256";
+import { hasLogin } from "@/app/store/authSlice";
+import { useDispatch } from "react-redux";
 
 const LoginForm = ({ open, setShowLoginDialog }) => {
   const [userRole, setUserRole] = useState("student");
@@ -34,6 +36,8 @@ const LoginForm = ({ open, setShowLoginDialog }) => {
   const toggleRole = (role) => {
     setUserRole(role);
   };
+
+  const dispatch = useDispatch();
 
   return (
     <Dialog
@@ -76,7 +80,7 @@ const LoginForm = ({ open, setShowLoginDialog }) => {
                 push(`/profile`);
               } else if (res.status == 200) {
                 setLoading(false);
-                localStorage.setItem("authTokenOwn", sha256(res.data.token));
+                dispatch(hasLogin(res.data));
                 push(`/profile`);
                 // push({
                 //   pathname: '/profile',

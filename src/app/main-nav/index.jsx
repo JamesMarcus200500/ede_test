@@ -4,6 +4,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import MobileNav from "./mobileNav";
 import DesktopNav from "./desktopNav";
 import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { hasLogin } from "../store/authSlice";
 
 export default function Navigation() {
   const sm = useMediaQuery("(max-width:767px)");
@@ -17,7 +19,9 @@ export default function Navigation() {
   // })
   const [token, setToken] = useState({});
   //console.log(session, token)
+  const dispatch = useDispatch();
   React.useEffect(() => {
+    dispatch(hasLogin())
     const addSticky = () => {
       if (window.scrollY >= 100) {
         setSticky(true);

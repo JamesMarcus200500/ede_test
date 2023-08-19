@@ -1,11 +1,8 @@
 "use client";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-  id: undefined,
-  apiKey: undefined,
-  phoneNumber: undefined,
-  email: undefined,
+  hastoken: window.localStorage.getItem("authTokenOwn"),
   isLogin: false,
 };
 
@@ -13,14 +10,30 @@ export const authSlice = createSlice({
   name: "authSlice",
   initialState,
   reducers: {
-    registerUser: (state, { payload }) => {
-      // state.apiKey = payload.apiKey;
-      state.phoneNumber = payload.phoneNumber;
-      state.email = payload.email;
-      // state.isLogin = payload.isLogin;
-      localStorage.setItem("verifiedUser", true);
+    hasLogin(state, action){ 
+      //console.log("authslice", state, action)
+      // if(state.hastoken){
+        try {
+          window.localStorage.setItem("authTokenOwn", action.payload.token);
+        } catch (error) {
+          console.log(error.message);
+        }
+        return{
+          ...state,
+          hastoken: window.localStorage.getItem("authTokenOwn"),
+          isLogin: true
+        }
+      //}
     },
+    logOut(state, action){
+      localStorage.removeItem("authTokenOwn")
+      return {
+        hastoken: null,
+        isLogin: false
+      }
+    }
   },
+  extraReducers: {}
 });
-export const { registerUser } = authSlice.actions;
+export const { hasLogin, logOut } = authSlice.actions;
 export default authSlice.reducer;
