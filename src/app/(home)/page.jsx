@@ -25,7 +25,7 @@ import SupportedPlatforms from "./SupportedPlatforms";
 import ChooseEduplus from "./ChooseEduplus";
 import MainProducts from "./MainProducts";
 
-export default function Home() {
+export default async function Home() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

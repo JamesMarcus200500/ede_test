@@ -32,8 +32,8 @@ export default function Profile({ params }) {
   const [token, setToken] = useState({});
 
   useEffect(() => {
-    setToken(window.localStorage.getItem('authTokenOwn'));
-  }, [])
+    setToken(window.localStorage.getItem("authTokenOwn"));
+  }, []);
   //console.log("nextAuth google session data",session)
   //console.log(token)
   const stepTab = (step) => {

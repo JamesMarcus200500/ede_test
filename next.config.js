@@ -2,7 +2,7 @@
 /* https://github.com/vercel/next.js/issues/44430 */
 const path = require("path");
 const nextConfig = {
-  output: "export",
+  // output: "export",
   trailingSlash: true,
   images: {
     domains: ["flagcdn.com"],
